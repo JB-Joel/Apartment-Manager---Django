@@ -1,0 +1,11 @@
+{% extends 'apart/base.html' %}
+{% load crispy_forms_tags %}
+{% block the_block %}
+    <div class="pt-2 content-section">
+        <form class="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input class="btn btn-primary" type="submit">
+        </form>
+    </div>
+{% endblock %}

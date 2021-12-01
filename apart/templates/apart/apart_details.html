@@ -1,0 +1,51 @@
+{% extends 'apart/base.html' %}
+{% load crispy_forms_tags %}
+{% block the_block %}
+<div class="container">
+    <div class="row no-gutters">
+        <div class="col-lg-2.5 mt-2 card" style="width: 14rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{apt.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Details</h6> <hr>
+                <div class="card-text">
+                    <p style="display:inline">Rooms: {{apt.rooms}}</p><br>
+                    <p style="display:inline">Bathrooms: {{apt.bathrooms}}</p>
+                    <p>Price: ${{apt.price}}</p>
+                </div>
+                <a href="#" class="btn-sm btn-warning card-link">Edit</a>
+                {% if apt.tenant %}
+                {% else %}
+                    <a href="{% url 'add-tenant' apt.id %}" class="btn-sm btn-primary card-link">+Add Tenant</a>
+                {% endif %}
+            </div>
+        </div>
+    
+        <div class="ml-1 col-lg mt-2 card" style="width: 14rem;">
+            <table class="table table-sm">
+                <tr>
+                    <td><span class="font-italic font-weight-light">Name: </span><span class="font-weight-normal">
+                        {% if apt.tenant %}{{apt.tenant.name}}{% else %}---{% endif %}</span></td>
+                    <td><span class="font-italic font-weight-light">Phone: </span><span class="font-weight-normal">
+                        {% if apt.tenant %}{{apt.tenant.phone}}{% else %}---{% endif %}</span></td>
+                    <td><span class="font-italic font-weight-light">Entry Date: </span class="font-weight-normal"><span>
+                        {% if apt.tenant %}{{apt.tenant.entry_date}}{% else %}---{% endif %}</span></td>
+                </tr>
+            </table>
+            <p> Maybe a little status bar here with icons showing the standings of the tenant.</p>
+            <p> kinda like what we have on service-now</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="mt-1 ml-3 mr-3 col-lg card">
+            <hr>
+            <ul>
+                <li>Information of current occupant</li>
+                <li>Maybe a link to 'archives', to view history of past occupants of this apartment</li>
+                <li>Show Current tenant's most recent payments/status</li>
+                <li>Other features</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    {% endblock %}

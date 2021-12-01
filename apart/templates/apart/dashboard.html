@@ -1,0 +1,77 @@
+{% extends 'apart/base.html' %}
+{% load static %}
+{% block the_block %}
+<div class="container-fluid">
+    <div class="row pt-2 justify-content-center">
+        <!-- <div class="col-md-4 col-lg-3">
+            <div class="card card-body">
+                <a class="btn btn-primary  btn-sm btn-block" href="">View Details</a>
+                <table class="table table-sm">
+                    <tr>
+                        <th>Total</th>
+                        <th>Available</th>
+                        <th>Occupied</th>
+                    </tr>
+                    <tr>
+                        <th>#</th> number of apartments and links to the details--
+                        <-- <th>#</th>
+                        <th>#</th>
+                    </tr>
+                </table>
+            </div>
+        </div> -->
+
+        <div class="col-md-4 col-lg-3">
+            <div class="card card-body">
+                <a class="btn mt-2 btn-outline-primary" href="{% url 'add' %}">New
+                <img src="{% static 'apart/pics/home.png' %}" height="100"></a>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3">
+            <div class="card card-body">
+                <a class="btn mt-2 btn-outline-primary" href="">
+                <img src="{% static 'apart/pics/home.png' %}" height="100"></a>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-lg-3">
+            <div class="card card-body">
+                <a class="btn btn-primary  btn-sm btn-block" href="">Details</a>
+                <table class="table table-sm">
+                    <tr>
+                        <th>Occupied</th>
+                        <th>Vacant</th>
+                    </tr>
+                    <tr>
+                        <th>{{counts.occupied}}/{{apts.count}}</th> <!--number of apartments and links to the details-->
+                        <th>{{counts.empty}}/{{apts.count}}</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <th class="">Apartment</th>
+                    <th class="">Occupant</th>
+                    <th class="">Status</th>
+                    <th class="">Next Payment</th>
+                </tr>
+                {% for apt in apts %}
+                    <tr>
+                        <td><a href="{% url 'apart_details' apt.name%}">{{apt.name}}: ({{apt.tenant.name}})</a></td>
+                        <td>{{apt.tenant}}</td>
+                        <td><span class="text-success">Paid</span></td>
+                        <td><span class="text-">{{apt.tenant.entry_date|date:"M d, Y"}}</span></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock the_block %}
