@@ -14,3 +14,4 @@ _Work in Progress_.<br>
 - A communication system (email/text) for managers to be able to send announcements/messages to all/individual tenants
 - Notify tenants of bad standing? (tenants facing possible eviction?)
 - 
+![Screenshot 2021-11-30 233702](https://user-images.githubusercontent.com/95236747/144172771-1aa122ea-2b53-43a2-a3c8-08e3a3844cba.jpg)
